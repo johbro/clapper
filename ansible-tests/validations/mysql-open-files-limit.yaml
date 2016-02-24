@@ -1,0 +1,17 @@
+---
+- hosts: controller
+  vars:
+    metadata:
+      name: MySQL Open Files Limit
+      description: >
+        Verify the `open-files-limit` configuration is high enough.
+    min_open_files_limit: 16384
+  tasks:
+  - name: Get the open-files-limit value
+    register: mysqld_process_args
+    shell: "ps aux | grep mysqld | grep 'open-files-limit'"
+    failed_when: "mysqld_process_args.rc != 0"
+  - name: Test the open-files-limit value
+    fail:
+      msg: The --open-files-limit option for mysql must be higher than {{ min_open_files_limit }}
+    failed_when: "{{ mysqld_process_args.stdout|regex_replace('^.*--open-files-limit=([-0-9]+).*$', '\\\\1')|int }} < {{ min_open_files_limit }}"
