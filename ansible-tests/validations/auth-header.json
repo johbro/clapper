@@ -1,0 +1,10 @@
+{
+    "auth": {
+        "passwordCredentials": {
+            "password": "",
+            "username": ""
+        },
+        "tenantName": "admin"
+    }
+}
+
