@@ -36,6 +36,7 @@ Validations can belong to multiple groups.
 * [Validate the Heat network environment files](network_environment.yaml)
 * [Detect rogue DHCP servers](rogue-dhcp.yaml)
 * [Verify the undercloud doesn't run too many processes](undercloud-process-count.yaml)
+* [Verify debug is disabled on undercloud services](undercloud-debug.yaml)
 
 ## Post-deployment ##
 
